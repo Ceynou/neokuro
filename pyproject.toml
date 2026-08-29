@@ -1,5 +1,5 @@
 [project]
-name = "owokuro"
+name = "neokuro"
 version = "0.1.2"
 description = "Generate mokuro files using owocr"
 readme = "README.md"
@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [project.scripts]
-owokuro = "owokuro.__main__:main"
+neokuro = "neokuro.__main__:main"
 
 [build-system]
 requires = ["uv_build>=0.9.26,<0.10.0"]

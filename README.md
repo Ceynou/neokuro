@@ -1,4 +1,4 @@
-# owokuro
+# neokuro
 
 Generate [mokuro](https://github.com/kha-white/mokuro) files using [owocr](https://github.com/AuroraWright/owocr) as the OCR backend.
 
@@ -7,7 +7,7 @@ Generate [mokuro](https://github.com/kha-white/mokuro) files using [owocr](https
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/) (should theoretically work with python3-pip as well) and then run:
 
 ```
-uv tool install git+https://github.com/kamperemu/owokuro
+uv tool install git+https://github.com/kamperemu/neokuro
 ```
 
 ## Usage Instructions
@@ -33,16 +33,26 @@ manga/
 You can process one volume by running:
 
 ```
-owokuro /path/to/manga/vol1
+neokuro /path/to/manga/vol1
 ```
 
 You can process all volumes by running:
 
 ```
-owokuro --parent_dir /path/to/manga
+neokuro --parent_dir /path/to/manga
 ```
 
 This will generate mokuro files for each volume in the /path/to/manga folder which can be used with [mokuro reader](https://reader.mokuro.app).
+
+## Resuming interrupted runs
+
+OCR processing a large amount of volumes can take a long time. If you're worried about the process being interrupted, you can pass the `--save_ocr` flag:
+
+```
+neokuro --parent_dir /path/to/manga --save_ocr
+```
+
+This saves the OCR data of every processed page to a temporary `_ocr` folder (created next to the volumes). On subsequent runs with the same flag, pages that already have cached OCR data are skipped and only the remaining pages are processed, so no work is lost. The `_ocr` folder can be safely deleted once all mokuro files have been generated.
 
 ## Supported Formats
 
